@@ -198,6 +198,43 @@
             Create a new <see cref="T:RtfPipe.RtfHtmlSettings"/> object
             </summary>
         </member>
+        <member name="T:RtfPipe.RtfSource">
+            <summary>
+            Represents a source of RTF content. It auto-converts from either a 
+            <see cref="T:System.String"/>, <see cref="T:System.IO.TextReader"/>, or <see cref="T:System.IO.Stream" />.
+            Using a <see cref="T:System.IO.Stream"/> is preferred as an RTF file can switch binary
+            encodings in the middle of a file
+            </summary>
+        </member>
+        <member name="P:RtfPipe.RtfSource.Reader">
+            <summary>
+            A reader used to read text from the source
+            </summary>
+        </member>
+        <member name="M:RtfPipe.RtfSource.#ctor(System.IO.TextReader)">
+            <summary>
+            Create an RTF source from a reader
+            </summary>
+            <param name="reader">The <see cref="T:System.IO.TextReader"/> to use</param>
+        </member>
+        <member name="M:RtfPipe.RtfSource.op_Implicit(System.String)~RtfPipe.RtfSource">
+            <summary>
+            Implicitly convert strings containing RTF content to an <see cref="T:RtfPipe.RtfSource"/>
+            </summary>
+            <param name="value">RTF content</param>
+        </member>
+        <member name="M:RtfPipe.RtfSource.op_Implicit(System.IO.TextReader)~RtfPipe.RtfSource">
+            <summary>
+            Implicitly convert a <see cref="T:System.IO.TextReader"/> containing RTF content to an <see cref="T:RtfPipe.RtfSource"/>
+            </summary>
+            <param name="value">RTF content</param>
+        </member>
+        <member name="M:RtfPipe.RtfSource.op_Implicit(System.IO.Stream)~RtfPipe.RtfSource">
+            <summary>
+            Implicitly convert a <see cref="T:System.IO.Stream"/> containing RTF content to an <see cref="T:RtfPipe.RtfSource"/>
+            </summary>
+            <param name="value">RTF content</param>
+        </member>
         <member name="F:RtfPipe.BorderStyle.None">
             <summary>No border.</summary>
         </member>

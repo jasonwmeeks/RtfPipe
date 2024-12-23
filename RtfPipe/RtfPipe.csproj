@@ -8,10 +8,10 @@
     <Product />
     <Description>RtfPipe is a .NET library for parsing Rich Text Format (RTF) streams and converting them to HTML</Description>
     <PackageId>RtfPipe</PackageId>
-    <PackageProjectUrl>https://github.com/erdomke/RtfPipe</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/jasonwmeeks/RtfPipe</PackageProjectUrl>
     <PackageTags>html,rtf,rich text</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/erdomke/RtfPipe</RepositoryUrl>
+    <RepositoryUrl>git://github.com/jasonwmeeks/RtfPipe</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>7.1</LangVersion>
     <SignAssembly>true</SignAssembly>
@@ -44,6 +44,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
-    <DocumentationFile>C:\Users\erdomke\source\GitHub\RtfPipe\RtfPipe\RtfPipe.xml</DocumentationFile>
+    <DocumentationFile>C:\dev\jasonwmeeks\RtfPipe\RtfPipe\RtfPipe.xml</DocumentationFile>
   </PropertyGroup>
 </Project>
