@@ -158,21 +158,30 @@ namespace RtfPipe.Model
         var numType = element.Styles.OfType<ListLevelType>().FirstOrDefault()?.Value
             ?? element.Styles.OfType<NumberingTypeToken>().FirstOrDefault()?.Value
             ?? NumberingType.Numbers;
-        switch (numType)
+        
+        try
         {
-          case NumberingType.LowerLetter:
-            _writer.WriteAttributeString("type", "a");
-            break;
-          case NumberingType.LowerRoman:
-            _writer.WriteAttributeString("type", "i");
-            break;
-          case NumberingType.UpperLetter:
-            _writer.WriteAttributeString("type", "A");
-            break;
-          case NumberingType.UpperRoman:
-            _writer.WriteAttributeString("type", "I");
-            break;
+                  switch (numType)
+                  {
+                    case NumberingType.LowerLetter:
+                      _writer.WriteAttributeString("type", "a");
+                      break;
+                    case NumberingType.LowerRoman:
+                      _writer.WriteAttributeString("type", "i");
+                      break;
+                    case NumberingType.UpperLetter:
+                      _writer.WriteAttributeString("type", "A");
+                      break;
+                    case NumberingType.UpperRoman:
+                      _writer.WriteAttributeString("type", "I");
+                      break;
+                  }
         }
+        catch (Exception e)
+        {
+          string error = e.StackTrace;
+        }
+
 
         var startAt = element.Styles.OfType<NumberingStart>().FirstOrDefault()?.Value ?? 1;
         if (startAt > 1)
@@ -269,8 +278,10 @@ namespace RtfPipe.Model
           cellIdx++;
           widths.Add(width);
         }
+
         boundaries[i].Index = cellIdx;
       }
+
       var indexDict = boundaries.ToDictionary(b => b.RightBoundary, b => b.Index);
 
       var rows = table.Elements().ToList();
@@ -283,7 +294,18 @@ namespace RtfPipe.Model
         for (var i = 0; i < cells.Count; i++)
         {
           var token = cells[i].Styles.OfType<CellToken>().Single();
-          var lastIndex = indexDict[token.RightBoundary];
+          var lastIndex = 0;
+
+          // Catch exception when token.RightBoundary is not found in indexDict. Set lastIndex to startIndex instead.
+          try
+          {
+            lastIndex = indexDict[token.RightBoundary];
+          }
+          catch (Exception e)
+          {
+            lastIndex = startIndex;
+          }
+
           token.Index = startIndex;
           token.ColSpan = lastIndex - startIndex + 1;
 
@@ -294,7 +316,6 @@ namespace RtfPipe.Model
           startIndex = lastIndex + 1;
         }
       }
-
       _writer.WriteStartElement("colgroup");
       foreach (var width in widths)
       {

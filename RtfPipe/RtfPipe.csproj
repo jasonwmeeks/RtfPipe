@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Authors>Eric Domke</Authors>
+    <Authors>Eric Domke, Jason Meeks</Authors>
     <Company />
     <Product />
     <Description>RtfPipe is a .NET library for parsing Rich Text Format (RTF) streams and converting them to HTML</Description>
-    <PackageId>RtfPipe</PackageId>
+    <PackageId>jm.RtfPipe</PackageId>
     <PackageProjectUrl>https://github.com/jasonwmeeks/RtfPipe</PackageProjectUrl>
     <PackageTags>html,rtf,rich text</PackageTags>
     <RepositoryType>git</RepositoryType>
@@ -17,7 +17,14 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>RtfPipeStrongNameKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\readme.md" Pack="true" PackagePath=""/>
+    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG</DefineConstants>

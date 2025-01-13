@@ -1,6 +1,7 @@
-# RtfPipe
+# jm.RtfPipe
+This is a fork of the erdomke/RtfPipe repository, which seems to be no longer maintainable.
 
-RtfPipe is a .NET library for parsing [Rich Text Format (RTF)](https://www.microsoft.com/en-us/download/details.aspx?id=10725) 
+jm.RtfPipe is a .NET library for parsing [Rich Text Format (RTF)](https://www.microsoft.com/en-us/download/details.aspx?id=10725) 
 streams and converting them to HTML.  While initially adapted from the work started by 
 [Jani Giannoudis](https://www.codeproject.com/Articles/27431/Writing-Your-Own-RTF-Converter), it has
 been completely rewritten to support more features. When combined with the 
@@ -24,9 +25,9 @@ var html = Rtf.ToHtml(rtf);
 
 ## Installing via NuGet
 
-[![NuGet version](https://badge.fury.io/nu/RtfPipe.svg)](https://www.nuget.org/packages/RtfPipe)
+[![NuGet version](https://badge.fury.io/nu/RtfPipe.svg)](https://www.nuget.org/packages/jm.RtfPipe/)
 
-    Install-Package RtfPipe
+    Install-Package jm.RtfPipe
     
 ## Building
 
